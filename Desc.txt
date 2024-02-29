@@ -1,0 +1,40 @@
+User Query: "Do you accept orders in the chat or on WhatsApp?"
+Bot Response: "Sure yes, you can make an order here in the chat by sending me your address details with phone number ma. I will take help from a human agent to make an order for you & send you the invoice for payment. After receiving your address details our customer care executives will contact you for payment confirmation."
+User Query: "Do you have COD/ Cash on delivery?"
+Bot Response: "Due to high return rate on COD orders as of now we stopped COD facility ma. All other payment options available on our website."
+Account Management:
+
+User Query: "How do I reset my password?"
+Bot Response: "To reset your password, go to the login page and click on 'Forgot Password.' Follow the instructions sent to your email..."
+Product Inquiries:
+
+User Query: “Will your products work?”
+Bot Response: “Definitely you will enjoy the freshness of Company Name. Keep a simple routine and be consistent. Herbs will take care of the rest.”
+User Query: “Not in stock”
+Bot Response: “Sorry for making you wait ma. Due to our reliance on our farm's produce for crafting our products, we occasionally fall slightly behind the demand. When we get the product back in stock we will update you ma. Do provide us your WhatsApp number to send you the reminder.”
+User Query: “OUT OF STOCK”
+Bot Response: “Sorry to make you wait ma. Since most of the products are grown in our farm and the manufacturing depends on weather there will be few out of stocks in our products. I will make them all available freshly within a week & update you ma.”
+Order Issues:
+
+User Query: “I received a damaged product”
+Bot Response: “Oh gosh! Sincere apologies for the inconvenience caused ma. Hope you understand we deliver through third-party couriers & too many people involved in delivering the goods to your doorstep. But we will take complete responsibility for the damage. Here are the solutions we can provide you: 1- Instant Refund for the damaged product. 2- Resend it to you on your next order. 3- Resend it immediately. (Please be considerate on choosing this option as the courier charge will get higher than the product cost for us🤗) We serve you accordingly.❤️”
+User Query: “Poor customer response”
+Bot Response: “Sorry for the delay in responding to your messages ma. Ping me here I will help you. Since I’m an AI my capabilities are limited, Yet I try my best to serve you.”
+Order Tracking:
+
+User Query: “When will I get my order?”
+Bot Response: “Are you waiting for your products? Please share your mobile number given in the order with me. I will help you track its status.”
+Returns and Refunds:
+
+User Query:can I return an item?"
+Bot Response: "Certainly! You can return items within 30 days of purchase. Please follow our return process..."
+Product Usage Instructions:
+
+User Query: “How to use avarampoo bath powder”
+Bot Response: “1) Take the required quantity of this powder in a tray and Mix the powder with water to make a loose paste. 2) Apply to the body and face gently. 3) Rinse well while taking a bath. 4) This is important. Enjoy the fresh natural aroma and smooth texture of your skin after a bath, respectively.”
+User Query: "What is a Loofah. What is the use of loofah. How to clean it post wash?"
+Bot Response: "Loofahs are made from fibrous material found in gourd-like tropical fruits. The spongy texture is perfect for exfoliating skin to keep it smooth and sleek. To properly use a loofah, you’ll need to get one, soak it in water just a minute before bath so as to soften the texture. Then you rub it on your skin like a shower brush. Make sure to also rinse, dry, and sanitize your loofah in order to keep it clean."
+Office Hours:
+
+User Query: "Tell me your Office Working Hours"
+Bot Response: "Mon-Sat 9:30 AM to 6:30 PM Sunday- Holiday"

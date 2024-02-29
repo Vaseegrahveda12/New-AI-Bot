@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    
+   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.top{
+  height: 12vh;
+  width: 420px;
+  background-image: linear-gradient(20deg,#f8a4ed,#f6e8e7);
+}
+.header{
+  width:420px;
+  height:22%;
+  left:0px;
+  position:absolute;
+/*  background-image: linear-gradient(to right,#F7CDE1,#ffd1ff);
+  background: linear-gradient(135deg, rgba(42, 39, 218, 0.72) 0%, rgba(0, 204, 255, 0.72) 100%);
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+  border-bottom-left-radius: 0% 20%;
+  border-bottom-right-radius: 74% 50%;*/
+}
+.top-img{
+  width:420px;
+  height:22%;
+  left:0px;
+  position:absolute;
+}
+.top-img img{
+  width:100%;
+  height:100%;
+  left:0px;
+  top: 0%;
+  position:absolute;
+  background-position:cover;
+}
+body {
+  background: #E3F2FD;
+}
+.chatbot-toggler {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  outline: none;
+  border: none;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(#f8a4ed,#f8def2);
+  transition: all 0.2s ease;
+}
+body.show-chatbot .chatbot-toggler {
+  transform: rotate(90deg);
+}
+.chatbot-toggler span {
+  color: #fff;
+  position: absolute;
+}
+.chatbot-toggler span:last-child,
+body.show-chatbot .chatbot-toggler span:first-child  {
+  opacity: 0;
+}
+body.show-chatbot .chatbot-toggler span:last-child {
+  opacity: 1;
+}
+.chatbot {
+  position: fixed;
+  right: 35px;
+  bottom: 90px;
+  width: 420px;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: bottom right;
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+              0 32px 64px -48px rgba(0,0,0,0.5);
+  transition: all 0.1s ease;
+
+}
+body.show-chatbot .chatbot {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+/*.chatbot header {
+    width: 420px;
+    height: 22%;
+    left: 0pc;
+    position: absolute;
+    background-image: linear-gradient(to right,#F7CDE1,#ffd1ff);
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    border-bottom-left-radius: 0% 20%;
+    border-bottom-right-radius: 74% 50%;
+}*/
+.image img{
+    height:70px;
+    width: 75px;
+    border-radius: 50%;
+    position:absolute;
+    top:10%;
+    left:3%;
+ }
+ #buttonContent {
+    display: none;
+    position:absolute;
+    top:37%;
+    left:50%;
+    color:black;
+    background-color:white;
+    border-radius: 1rem 0rem 1rem 1rem ;
+    width: 39%;
+    font-size: small;
+    letter-spacing: 1px;
+    height: 30px;
+    border: 1px solid #f8a4ed;
+    box-shadow: 1px 1px 2px 2px#f8a4ed;
+    padding: 5px 5px 5px 5px;
+  }
+ .btn button{
+    position:absolute;
+    top:15%;
+    overflow:hidden;
+    left:87%;
+    border: none;
+    background: none;
+ }
+ .btn .bx{
+     font-size: xx-large;
+     font-weight: 400;
+     color: rgb(7, 7, 7);
+ }
+.chatbot header span {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  display: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+header h2 {
+  font-size: 1.4rem;
+  text-align: center;
+}
+.chatbot .chatbox {
+  overflow-y: auto;
+  height: 520px;
+  padding: 30px 20px 100px;
+}
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar {
+  width: 6px;
+}
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 25px;
+}
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 25px;
+}
+.chatbox .chat {
+  display: flex;
+  list-style: none;
+}
+.chatbox .outgoing {
+  margin: 20px 0;
+  justify-content: flex-end;
+}
+.chatbox .incoming span {
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  cursor: default;
+  text-align: center;
+  line-height: 32px;
+  align-self: flex-end;
+  background: linear-gradient(to top,#f8a4ed,#f8def2);
+  border-radius: 4px;
+  margin: 2px 10px 35px 0;
+
+}
+.chatbox .chat p {
+  white-space: pre-wrap;
+  padding: 10px 16px ;
+  border-radius: 10px 10px 0 10px;
+  max-width: 75%;
+  color: #fff;
+  font-size: 0.95rem;
+  background: linear-gradient(to top,#f8a4ed,#f8def2);
+}
+.chatbox .incoming p {
+  border-radius: 10px 10px 10px 0;
+}
+.chatbox .chat p.error {
+  color: #721c24;
+  background: #f8d7da;
+}
+.chatbox .incoming p {
+  color: #000;
+  background: #f2f2f2;
+}
+.chatbot .chat-input {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 3px 20px;
+  border-top: 1px solid #ddd;
+}
+.chat-input textarea {
+  height: 55px;
+  width: 500%;
+  border: none;
+  outline: none;
+  resize: none;
+  max-height: 180px;
+  padding: 15px 15px 15px 0;
+  font-size: 0.95rem;
+}
+.chat-input span {
+  align-self: flex-end;
+  color: #cd8acf;
+  cursor: pointer;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+  font-size: 2.3rem;
+}
+#chat-box {
+  width: 100%;
+  text-align:end;
+  font-size:x-small;
+}
+.chat-input textarea:valid ~ span {
+  visibility: visible;
+}
+.top h3{
+  align-items:center;
+  text-align: center;
+  justify-content: center;
+  color: #fff;
+}
+
+@media (max-width: 490px) {
+  .chatbot-toggler {
+    right: 20px;
+    bottom: 20px;
+  }
+  .chatbot {
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    border-radius: 0;
+    width: 100%;
+  }
+  .chatbot .chatbox {
+    height: 90%;
+    padding: 25px 15px 100px;
+  }
+  .chatbot .chat-input {
+    padding: 5px 15px;
+  }
+  .chatbot header span {
+    display: block;
+  }
+}
+
+
+
+
+   </style>
+
+</head>
+<body>
+    <form method="POST" name="chatInput">
+        <button class="chatbot-toggler">
+          <span class="material-symbols-rounded">mode_comment</span>
+          <span class="material-symbols-outlined">close</span>
+        </button>
+    <div class="chatbot">
+        <div class="header">
+          <div class="top"><h3>CHATTU</h3></div>
+          <div class="top-img">
+              <img src="Images/wave2.jpeg" alt="">
+          </div>
+            <div class="image">
+               <img src="Images/chatbot.jpeg" alt=""> 
+              </div>
+              <div class="btn">
+                  <p id="buttonContent" class="buttonContent">Turn On Notification</p>
+                  <button  class="button" onclick="showContent()"><i class='bx bx-dots-vertical-rounded'></i></button>
+                  <button><i class='bx bx-chevron-down'></i></button>
+              </div>
+          <span class="close-btn material-symbols-outlined">close</span>
+        </div>
+        <ul class="chatbox">
+          <li class="chat incoming">
+            <span class="material-symbols-outlined">smart_toy</span>
+          </li>
+        </ul>
+        <div class="chat-input">
+
+<!-----   <h1>AI ChatBot</h1>
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button id="send-btn">Send</button> --> 
+
+          <textarea id="user-input" placeholder="ENTER A MESSAGE..." maxlength="100" data-max-chars="100" spellcheck="false" required></textarea>
+        <!---- <p id="result"></p> --->
+          <div id="chat-box"></div>
+          <span id="send-btn" class="material-symbols-rounded">send</span>
+        </div>
+    </div>
+    </form>
+   
+
+   <script>
+    
+$(document).ready(function(){
+    $("#send-btn").click(function(){
+        var user_input = $("#user-input").val();
+        $("#chat-box").append;
+        $("#user-input").val('');
+        
+        $.ajax({
+            type: "POST",
+            url: "/get_bot_response",
+            data: { user_input: user_input },
+            success: function(response) {
+                $("#chat-box").append("<p>Bot: " + response.bot_response + "</p>");
+            }
+        });
+    });
+});
+
+const chatbotToggler = document.querySelector(".chatbot-toggler");
+  const closeBtn = document.querySelector(".close-btn");
+  const chatbox = document.querySelector(".chatbox");
+  const chatInput = document.querySelector(".chat-input textarea");
+  const sendChatBtn = document.querySelector(".chat-input span");
+  const inputInitHeight = chatInput.scrollHeight;
+
+  const createChatLi = (message, className) => {
+       
+      const chatLi = document.createElement("li");
+      chatLi.classList.add("chat", `${className}`);
+      let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined">smart_toy</span><p></p>`;
+      chatLi.innerHTML = chatContent;
+      chatLi.querySelector("p").textContent = message;
+      return chatLi; 
+  }
+      const handleChat = () => {
+      userMessage = chatInput.value.trim(); 
+      if(!userMessage) return;
+  
+      chatInput.style.height = `${inputInitHeight}px`;
+      chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+      chatbox.scrollTo(0, chatbox.scrollHeight);
+      
+      setTimeout(() => {      
+          const incomingChatLi = createChatLi("Typing...", "incoming");
+          chatbox.appendChild(incomingChatLi);
+          chatbox.scrollTo(0, chatbox.scrollHeight);
+          generateResponse(incomingChatLi);
+      }, 600);
+
+      const generateResponse = (chatElement) => {
+        const messageElement = chatElement.querySelector("p");
+        fetch("/txt", {
+            method: "POST",
+            body: new URLSearchParams({ chatInput: userMessage }),
+            headers: {
+                "Access-Control-Allow-Credentials": true,
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {       
+           messageElement.textContent = data.response;
+           chatInput.value = "";
+    }).catch(() => {
+       messageElement.classList.add("error");
+       messageElement.textContent = "Network Error . Please try again.";
+   }).finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
+  
+      }
+  }
+  
+  chatInput.addEventListener("input", () => {
+      chatInput.style.height = `${inputInitHeight}px`;
+      chatInput.style.height = `${chatInput.scrollHeight}px`;
+  });
+  
+  chatInput.addEventListener("keydown", (e) => {
+      if(e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
+          e.preventDefault();
+          handleChat();
+      }
+  });
+  
+  sendChatBtn.addEventListener("click", handleChat);
+  closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
+  chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+
+
+var p=document.getElementById("buttonContent");
+var display =0;
+function showContent() {
+   if(display==1){
+    p.style.display="block";
+    display=0;
+   }
+   else{
+    p.style.display="none";
+    display=1;
+   }
+}
+
+var myText = document.getElementById("my-text");
+var result = document.getElementById("chat-box");
+var limit =100;
+result.textContent = 0 + "/" + limit;
+
+myText.addEventListener("input",function(){
+    var textLength = myText.value.length;
+    result.textContent = textLength + "/" + limit;
+});
+
+   </script>
+</body>
+</html>
